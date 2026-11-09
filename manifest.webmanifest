@@ -1,7 +1,7 @@
 {
   "name": "JARVIS Mobile Demo",
   "short_name": "JARVIS",
-  "description": "Demostración local de JARVIS con mapa y conversación simulada",
+  "description": "Demostración de JARVIS con voz, dictado, mapa y conversación simulada",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
