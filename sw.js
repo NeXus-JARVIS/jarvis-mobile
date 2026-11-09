@@ -1,10 +1,10 @@
-const CACHE = "jarvis-mobile-demo-v2";
+const CACHE = "jarvis-mobile-demo-v3";
 const ASSETS = [
   "./",
   "./index.html",
-  "./styles.css",
-  "./app.js",
-  "./manifest.webmanifest",
+  "./styles.css?v=3",
+  "./app.js?v=3",
+  "./manifest.webmanifest?v=3",
   "./icons/icon-192.png",
   "./icons/icon-512.png"
 ];
@@ -22,6 +22,8 @@ self.addEventListener("activate", event => {
     caches.keys()
       .then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))
       .then(() => self.clients.claim())
+      .then(() => self.clients.matchAll({ type: "window" }))
+      .then(clients => Promise.all(clients.map(client => client.navigate(client.url))))
   );
 });
 
